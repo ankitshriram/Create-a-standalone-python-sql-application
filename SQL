@@ -1,0 +1,6 @@
+#start your sql in the terminal or command prompt on your computer 
+#you may give any other database name as well
+#next visit the python-sql file
+
+
+create database python_lab;    
