@@ -1,0 +1,26 @@
+import mysql.connector
+cnx = mysql.connector.connect(user='root', password='***', host='localhost', database="python_lab")
+# Create a cursor object
+cursor = cnx.cursor()
+cursor.execute(""" CREATE TABLE if not exists Customer (
+CustNo INT PRIMARY KEY, CustName VARCHAR(40), Age INT,
+Gender CHAR(1),
+Salary DECIMAL(10, 2) )
+""")
+cursor.execute("""
+INSERT INTO Customer (CustNo, CustName, Age, Gender, Salary) VALUES (1, 'Customer1', 30, 'M', 85000),
+(2, 'Customer2', 25, 'F', 90000),
+(3, 'Customer3', 35, 'M', 70000),
+(4, 'Customer4', 40, 'F', 95000),
+(5, 'Customer5', 45, 'M', 80000)
+""")
+cnx.commit()
+cursor.execute("SELECT * FROM Customer WHERE Salary > 80000")
+for row in cursor.fetchall():
+    print(row)
+cursor.execute("SELECT Gender, COUNT(*) FROM Customer GROUP BY Gender")
+for row in cursor.fetchall():
+    print(f"{row[0]}: {row[1]}")
+
+cursor.close()
+cnx.close()
