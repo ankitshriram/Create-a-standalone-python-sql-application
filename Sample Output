@@ -1,0 +1,5 @@
+(1, 'Customer1', 30, 'M', Decimal('85000.00'))
+(2, 'Customer2', 25, 'F', Decimal('90000.00'))
+(4, 'Customer4', 40, 'F', Decimal('95000.00'))
+F: 2
+M: 3
